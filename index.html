@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AniVerse Pro - Next-Gen Anime Streaming</title>
+  <!-- Link to main CSS -->
+  <link rel="stylesheet" href="styles.css"/>
+  <!-- Main JS Logic -->
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="partner-logos">
+      <a href="#" class="platform-link" data-platform-url="https://anime-world.co/">
+        <img src="logo1.png" alt="Anime World" class="platform-logo" />
+      </a>
+      <a href="#" class="platform-link" data-platform-url="https://animedekho.net/category/anime/">
+        <img src="logo2.png" alt="Anime Dekho" class="platform-logo" />
+      </a>
+    </div>
+    <div class="site-logo">AniVerse Pro</div>
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search anime..."/>
+    </div>
+    <div class="user-stats">
+      <div class="coins" title="Coins are earned by watching anime & participating in events.">🪙 0</div>
+      <div class="ranking">🏆 #0</div>
+    </div>
+    <!-- Authentication links -->
+    <div class="auth-links">
+      <button id="signInBtn" class="cta auth-btn">Sign Up</button>
+      <button id="logInBtn" class="cta auth-btn">Log In</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Hero Section (Slider) -->
+    <section class="hero">
+      <div class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="slide active" data-anime="Demon Slayer">
+          <img src="abcder.jpg" alt="Demon Slayer" class="slide-image" />
+          <div class="slide-content">
+            <h2>DEMON SLAYER: KIMETSU NO YAIBA</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide" data-anime="Solo Leveling">
+          <img src="abcdsolo.png" alt="Solo Leveling" class="slide-image" />
+          <div class="slide-content">
+            <h2>SOLO LEVELING</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide" data-anime="Another">
+          <img src="another.jpg" alt="Another" class="slide-image" />
+          <div class="slide-content">
+            <h2>ANOTHER</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide" data-anime="Naruto Shippuden">
+          <img src="narutos.jpg" alt="Naruto Shippuden" class="slide-image" />
+          <div class="slide-content">
+            <h2>NARUTO SHIPPUDEN</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+        <!-- Slide 5 (Re:Zero) -->
+        <div class="slide" data-anime="ReZero">
+          <img src="rezeros.jpg" alt="ReZero" class="slide-image" style="width:100%; height:auto; max-height:500px;" />
+          <div class="slide-content">
+            <h2>RE:ZERO − STARTING LIFE IN ANOTHER WORLD</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+        <!-- Slide 6 (Violet Evergarden) -->
+        <div class="slide" data-anime="Violet Evergarden">
+          <img src="VioletEs.jpg" alt="Violet Evergarden" class="slide-image" />
+          <div class="slide-content">
+            <h2>VIOLET EVERGARDEN</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+        <!-- Slide 7 (Tekt Op. Destiny) -->
+        <div class="slide" data-anime="Tekt Op. Destiny">
+          <img src="Tkopds.jpg" alt="Tekt Op. Destiny" class="slide-image" />
+          <div class="slide-content">
+            <h2>TEKT OP. DESTINY</h2>
+            <button class="cta watch-btn">Watch Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anime Grid (Populated via JavaScript) -->
+    <section class="anime-grid">
+      <div class="grid-header">
+        <h3>Popular This Week</h3>
+      </div>
+      <div class="grid" id="anime-grid"></div>
+    </section>
+
+    <!-- User Dashboard -->
+    <section class="dashboard">
+      <h3>Your Stats</h3>
+      <div class="stats">
+        <div class="stat-card">
+          <h4>Total Coins</h4>
+          <p class="neon-text">0</p>
+        </div>
+        <div class="stat-card">
+          <h4>Watched Episodes</h4>
+          <p>0</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Streaming Platforms Section -->
+    <section class="other-platforms">
+      <h3>Other Anime Streaming Platforms</h3>
+      <div class="platforms-grid">
+        <a href="#" class="platform-link" data-platform-url="https://anime-world.co/">
+          <img src="logo1.png" alt="Anime World" class="platform-logo" />
+        </a>
+        <a href="#" class="platform-link" data-platform-url="https://animedekho.net/category/anime/">
+          <img src="logo2.png" alt="Anime Dekho" class="platform-logo" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Video Modal for Anime Playback -->
+  <div class="video-modal" id="videoModal">
+    <div class="modal-content">
+      <span class="close-modal video-close">&times;</span>
+      <div class="player-header">
+        <div class="title-container">
+          <h3 id="animeTitle"></h3>
+          <button id="backBtn" class="cta back-btn">Main Page</button>
+          <button id="adsToggleBtn" class="cta ads-toggle-btn">Ads: Blocked</button>
+        </div>
+        <select id="episodeSelect">
+          <option value="hindi">Hindi Dub</option>
+          <option value="japanese">Japanese Dub</option>
+        </select>
+      </div>
+      <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <div class="loader-message" id="loaderMessage"></div>
+      </div>
+      <div class="video-container" id="videoContainer">
+        <iframe id="videoPlayer" width="100%" height="100%" src=""
+                frameborder="0" allowfullscreen
+                sandbox="allow-scripts allow-same-origin"></iframe>
+      </div>
+      <div class="watch-status">
+        <p>Coins Earned: <span id="earnedCoins">0</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Partner Platforms -->
+  <div class="video-modal" id="platformModal">
+    <div class="modal-content">
+      <span class="close-modal platform-close" id="closePlatformModal">&times;</span>
+      <div class="player-header">
+        <div class="title-container">
+          <h3 id="platformTitle"></h3>
+          <button class="cta external-btn" id="openExternallyBtn">Open Externally</button>
+        </div>
+      </div>
+      <div class="loader" id="platformLoader">
+        <div class="spinner"></div>
+        <div class="loader-message" id="platformLoaderMessage">Loading platform...</div>
+      </div>
+      <div id="platformFallbackContainer" style="display: none; text-align: center; margin-top: 1rem;">
+        <img src="nezuko2.jpg" alt="Fallback"
+             style="width: 100%; max-width: 800px; aspect-ratio: 16/9;
+                    object-fit: cover; border-radius: 10px;
+                    border: 2px solid red; box-shadow: 0 0 15px red;">
+        <div style="font-size: 1.8rem; font-weight: bold; color: var(--neon-blue); margin-top: 1rem;">
+          Unable to open here. Please use "Open Externally".
+        </div>
+      </div>
+      <div class="video-container" id="platformContainer">
+        <iframe id="platformFrame" width="100%" height="100%" src=""
+                frameborder="0" allowfullscreen
+                sandbox="allow-scripts allow-same-origin"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal (Manual Sign In / Log In) -->
+  <div class="video-modal" id="authModal">
+    <div class="modal-content">
+      <span class="close-modal auth-close" id="closeAuthModal">&times;</span>
+      <div class="auth-header">
+        <h3 id="authTitle">Sign In / Log In</h3>
+      </div>
+      <div class="auth-body">
+        <input type="email" id="authEmail" placeholder="Email" required />
+        <input type="password" id="authPassword" placeholder="Password" required />
+        <div class="auth-actions">
+          <button id="registerBtn" class="cta auth-btn">Register</button>
+          <button id="manualLogInBtn" class="cta auth-btn">Log In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stationary Terms & Conditions Footer -->
+  <footer class="terms-footer">
+    <p>
+      DMCA Digital Millennium Copyright Act Policy:
+      <a href="terms.html" target="_blank">Read Full Terms &amp; Conditions</a>
+    </p>
+  </footer>
+
+  <!-- Miyu Chat Container (Phone-like) -->
+  <div id="miyuChatContainer">
+    <div id="miyuPhoneFrame" class="hidden">
+      <!-- Notch at top -->
+      <div class="miyu-notch"></div>
+      <!-- The phone screen area -->
+      <div class="miyu-screen">
+        <div class="miyu-header">
+          <img src="AniVgirl.jpg" alt="Miyu" class="miyu-avatar">
+          <span class="miyu-name">Miyu</span>
+          <button id="miyuClose" class="miyu-close">&times;</button>
+        </div>
+        <div class="miyu-messages" id="miyuMessages">
+          <!-- Chat bubbles will be added here -->
+        </div>
+        <div class="miyu-input">
+          <input type="text" id="miyuText" placeholder="Say something...">
+          <button id="miyuSend" class="cta">Send</button>
+        </div>
+      </div>
+    </div>
+    <!-- Draggable icon (always visible) -->
+    <div id="miyuIcon">
+      <img src="AniVgirl.jpg" alt="Miyu">
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+later task : {
+      title: 'Dr.Stone',
+      category: 'Sci-Fi,Adventure',
+      coins: 1903,
+      image: 'drstoneg.jpg',
+      externalUrl: 'https://anime-world.co/series/dr-stone/'
+    },
+    {
+      title: 'Death Note',
+      category: 'Detective,Mystery',
+      coins: 1904,
+      image: 'dnoteg.jpg',
+      externalUrl: 'https://www.animeparadise.moe/anime/death-note'
+    },

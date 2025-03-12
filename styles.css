@@ -1,0 +1,725 @@
+:root {
+    --dark-bg: #0a0a12;
+    --neon-blue: #00f3ff;
+    --neon-pink: #ff00ff;
+    --text-primary: #ffffff;
+    --card-bg: #1a1a2a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background-color: rgba(10, 10, 18, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+}
+
+.partner-logos {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+    margin-right: 1rem;
+}
+
+.platform-logo {
+    width: 80px;
+    margin-right: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.platform-logo:hover {
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.search-container {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 2rem;
+}
+
+.search-container input {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--neon-blue);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.user-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Main Content */
+.content {
+    padding: 2rem 5%;
+    margin: 0 auto;
+    max-width: 1600px;
+}
+
+/* Hero Section */
+.hero {
+    height: calc(70vh - 80px);
+    margin-bottom: 2rem;
+}
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* This value will be adjusted in media queries */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* General slide settings */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Slides start off-screen */
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.slide.active {
+    left: 0; /* Active slide moves into view */
+    opacity: 1;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Specific fixes for slides */
+.slide[data-anime="Violet Evergarden"] .slide-image,
+.slide[data-anime="Tekt Op. Destiny"] .slide-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* Slide Content */
+.slide-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Anime Grid */
+.anime-grid {
+    margin: 2rem 0;
+}
+
+.grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.anime-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.anime-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Ranking Badge */
+.ranking-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Coin Badge */
+.coin-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    border: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    cursor: default;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.coin-badge:hover {
+    transform: scale(1.1);
+}
+
+/* Dashboard */
+.dashboard {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Other Platforms Section */
+.other-platforms {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.other-platforms h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.platforms-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* Modal Styles */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 2% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-modal {
+    cursor: pointer;
+}
+
+.video-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: var(--neon-blue);
+    font-size: 28px;
+    text-shadow: 0 0 6px var(--neon-blue);
+    transition: transform 0.3s ease;
+}
+
+.video-close:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 12px var(--neon-blue);
+}
+
+.platform-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: white;
+    font-size: 28px;
+}
+
+.player-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.watch-btn,
+.cta {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink)) !important;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    color: white !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.watch-btn:hover,
+.cta:hover {
+    transform: scale(1.05);
+}
+
+.ads-toggle-btn,
+.back-btn {
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.ads-toggle-btn:hover,
+.back-btn:hover {
+    transform: scale(1.05);
+}
+
+#episodeSelect {
+    margin-right: 3rem;
+    margin-top: 0.5rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin: 1rem 0;
+}
+
+#videoPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 18, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2100;
+    display: none;
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.1);
+    border-top: 8px solid var(--neon-blue);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.loader-message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.watch-status {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Authentication Modal Styles */
+#authModal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+}
+
+#authModal .modal-content {
+    background: var(--card-bg);
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+#authModal .close-modal.auth-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: var(--neon-blue);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#authModal h3 {
+    font-size: 2rem;
+}
+
+#authModal input {
+    width: 80%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    border: 1px solid var(--neon-blue);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.auth-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.auth-actions .auth-btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+}
+
+/* Terms Footer */
+.terms-footer {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 10px;
+  border-top: 2px solid var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+.terms-footer a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.terms-footer a:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Miyu Chat - Phone Style */
+#miyuChatContainer {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 300px;
+  z-index: 3000;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+#miyuChatContainer.dragging {
+  cursor: grabbing;
+  transform: scale(1.02);
+}
+
+#miyuPhoneFrame {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #000;
+  border-radius: 40px;
+  border: 2px solid var(--neon-blue);
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+.miyu-notch {
+  width: 60%;
+  height: 20px;
+  background-color: #222;
+  margin: 10px auto;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 0 4px #000 inset;
+}
+
+.miyu-screen {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--neon-blue);
+}
+
+.miyu-header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+  padding: 10px;
+}
+
+.miyu-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.miyu-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  flex: 1;
+}
+
+.miyu-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.miyu-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
+
+.user-bubble {
+  align-self: flex-end;
+  background: var(--neon-blue);
+  color: #000;
+  border-top-right-radius: 0;
+}
+
+.bot-bubble {
+  align-self: flex-start;
+  background: var(--neon-pink);
+  color: #fff;
+  border-top-left-radius: 0;
+}
+
+.miyu-input {
+  display: flex;
+  border-top: 1px solid var(--neon-blue);
+}
+
+.miyu-input input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.miyu-input .cta {
+  border-radius: 0;
+  margin: 0;
+}
+
+#miyuIcon {
+  position: absolute;
+  top: -25px;
+  right: -10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  border: 2px solid var(--neon-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+
+#miyuIcon:hover {
+  transform: scale(1.1);
+}
+
+#miyuIcon img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+/* ==================================== */
+/* Additional Responsive Adjustments  */
+/* ==================================== */
+
+/* For extra-large screens (smart TVs, high-res desktops) */
+@media (min-width: 1920px) {
+    .navbar {
+        padding: 1rem 8%;
+        height: 90px;
+    }
+    .site-logo {
+        font-size: 2.5rem;
+    }
+    .hero {
+        height: calc(70vh - 90px);
+    }
+    .hero-slider {
+        height: 60vh;
+    }
+    .slide-content h2 {
+        font-size: 2.5rem;
+    }
+    .anime-poster {
+        height: 350px;
+    }
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    .cta, .watch-btn, .ads-toggle-btn, .back-btn {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* For tablets and medium devices (portrait mode) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .hero {
+        height: calc(65vh - 70px);
+    }
+    .hero-slider {
+        height: 55vh;
+    }
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* For very small devices */
+@media (max-width: 360px) {
+    .site-logo {
+        font-size: 1.3rem;
+    }
+    .search-container input {
+        padding: 0.5rem 0.8rem;
+    }
+    .cta, .watch-btn, .ads-toggle-btn, .back-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
